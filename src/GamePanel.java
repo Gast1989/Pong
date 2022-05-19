@@ -29,9 +29,9 @@ public class GamePanel extends JPanel implements Runnable{
         newBall();
         score = new Score(GAME_WIDTH, GAME_HEIGHT);
 
-        this.setFocusable(true); // enfoca el Panel en caso de que presionamos teclas. De esta manera las reconoce
+        this.setFocusable(true); // El Panel se enfoca y reconoce los eventos de key
         this.addKeyListener(new AL()); // hara q el Panel responda a las teclas presionadas
-        this.setPreferredSize(SCREEN_SIZE); // requiere como parámetro un obj de tipo "Dimension"
+        this.setPreferredSize(SCREEN_SIZE);
 
         gameThread = new Thread(this);
         gameThread.start();
