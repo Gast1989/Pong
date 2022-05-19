@@ -51,7 +51,7 @@ public class GamePanel extends JPanel implements Runnable{
         image = createImage(getWidth(), getHeight()); // método de la clase "Image" importada
         graphics = image.getGraphics(); // creamos un graphics mediante la image
         draw(graphics); // dibujamos el obj graphics
-        g.drawImage(image, 0, 0, this); // "this" hace referencia al GamePanel
+        g.drawImage(image, 0, 0, this);
     }
 
     public void draw(Graphics g){
@@ -63,7 +63,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void move(){
         // se ejecuta luego de cada iteración del GameLoop
-        // logramos que el movimiento de las Paddles sea más fluido
+        // logramos movimiento + fluido de los Paddles
         paddle1.move();
         paddle2.move();
         ball.move();
@@ -94,9 +94,9 @@ public class GamePanel extends JPanel implements Runnable{
             ball.setYDirection(-ball.yVelocity);
         }
 
-        // colisión de la ball con las paddles, usando el método "intersection" de la clase "Rectangle"
+        // colisión de la ball con las paddles, usando el método "intersects" de la clase "Rectangle"
         if(ball.intersects(paddle1)){
-            ball.xVelocity = Math.abs(ball.xVelocity); // invertimos del + al - y vicervers
+            ball.xVelocity = Math.abs(ball.xVelocity); // invertimos del + al - y vicervera
             ball.xVelocity++; // OPCIONAL
             if(ball.yVelocity > 0){
                 ball.yVelocity++; // OPCIONAL
@@ -136,8 +136,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     }
 
-
-    // este metodo es ejecutado automaticamente al haber iniciado el Thread
+    // metodo es ejecutado automaticamente al haber iniciado el Thread
     public void run(){
         //gameLoop
         long lastTime = System.nanoTime();
@@ -169,6 +168,4 @@ public class GamePanel extends JPanel implements Runnable{
             paddle2.keyReleased(e);
         }
     }
-
-
 }
